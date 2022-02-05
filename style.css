@@ -1,13 +1,27 @@
-// Instantiate a webmap - a straightforward view of a webmap already present on ArcGIS Online.
-require(["esri/views/MapView", "esri/WebMap"], (MapView, WebMap) => {
-  const webmap = new WebMap({
-          portalItem: {
-            id: "cc7ac178257442fe996da7714b805bc4"
-            //The above id is the id of the webmap we're viewing.
-          }
-        });
-  const view = new MapView({
-          map: webmap,
-          container: "viewDiv"
-        });
-      });
+html,
+body,
+#viewDiv {
+  height: 450px; 
+  margin-left: 10%;
+  width: 80%;
+}
+
+h1 {
+  color: #3D3D3D;
+  margin-left:10%;
+  font-family: verdana;
+}
+
+p {
+  color: #3D3D3D;
+  margin-left:10%;
+  font-family: garamond;
+  font-size: 60%;
+}
+
+p1 {
+  text-align: center;
+  color: #3D3D3D;
+  font-family: garamond;
+  font-size: 120%;
+}
