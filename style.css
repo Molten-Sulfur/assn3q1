@@ -1,6 +1,22 @@
 html,
 body,
-#viewDiv {
+#webMapDiv {
+  height: 450px; 
+  margin-left: 10%;
+  width: 80%;
+}
+
+html,
+body,
+#featureLayerDiv {
+  height: 450px; 
+  margin-left: 10%;
+  width: 80%;
+}
+
+html,
+body,
+#crimeDiv {
   height: 450px; 
   margin-left: 10%;
   width: 80%;
@@ -20,7 +36,6 @@ p {
 }
 
 p1 {
-  text-align: center;
   color: #3D3D3D;
   font-family: garamond;
   font-size: 120%;
