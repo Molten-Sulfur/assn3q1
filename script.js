@@ -1,12 +1,13 @@
-require(["esri/Map", "esri/views/MapView"], function (Map, MapView) {
-        var map = new Map({
-          basemap: "topo-vector"
+// Instantiate a webmap - a straightforward view of a webmap already present on ArcGIS Online.
+require(["esri/views/MapView", "esri/WebMap"], (MapView, WebMap) => {
+  const webmap = new WebMap({
+          portalItem: {
+            id: "cc7ac178257442fe996da7714b805bc4"
+            //The above id is the id of the webmap we're viewing.
+          }
         });
-
-        var view = new MapView({
-          container: "viewDiv",
-          map: map,
-          zoom: 4,
-          center: [15, 65] // longitude, latitude
+  const view = new MapView({
+          map: webmap,
+          container: "viewDiv"
         });
       });
