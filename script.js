@@ -130,3 +130,67 @@ require([
     map: map
   });
 });
+
+
+
+
+
+
+//**HEATMAP
+
+// Create a new map
+require([
+  "esri/Map",
+  "esri/layers/CSVLayer",
+  "esri/views/MapView",
+  "esri/config",
+  "esri/core/urlUtils",
+  "dojo/domReady!"
+], function(Map, CSVLayer, MapView, esriConfig, urlUtils) {
+  
+  // Grab the URL
+  var url = "https://raw.githubusercontent.com/gbrunner/adv-programming-for-gis-and-rs/master/Web%20Development%20Module/Unit%202%20-%20ArcGIS%20JavaScript%20API/stl_crime_wgs_84.csv";
+  esriConfig.request.corsEnabledServers.push('https://rawgit.com');
+  
+  //Define the heatmap renderer
+  const renderer = {
+    type: "heatmap",
+    colorStops: [
+      { color: "rgba(72, 255, 0, 0)", ratio: 0 },
+      { color: "#Cbff00", ratio: 0.2 },
+      { color: "#Fbff00", ratio: 0.3 },
+      { color: "#Ffdc00", ratio: 0.4 },
+      { color: "#Ffc400", ratio: 0.5 },
+      { color: "#Ffa700", ratio: 0.6 },
+      { color: "#Ff9300", ratio: 0.7 },
+      { color: "Ff6d00", ratio: 0.8 },
+      { color: "#Ff4600", ratio: 0.9 },
+      { color: "#Ff2e00", ratio: 0.95 },
+      { color: "#Ff0700", ratio: 1 },
+    ],
+    maxPixelIntensity: 3000,
+    minPixelIntensity: 0
+  };
+  
+  //Define the layer
+  const csvLayer = new CSVLayer({
+    url: url,
+    title: "St. Louis Crime Heatmap",
+    copyright: "St. Louis Police Department",
+    renderer: renderer
+  });
+
+  // Initialize a map.
+  var map = new Map({
+    basemap: "topo-vector",
+    layers: [csvLayer]
+  });
+
+  //We know everything we need to know. Create the div!
+  var view = new MapView({
+    container: "crimeHeatDiv",
+    center: [-90.25, 38.65],
+    zoom: 11,
+    map: map
+  });
+});
